@@ -350,26 +350,3 @@
     padding: 1rem;
   }
 }
-  .checkout-content {
-    grid-template-columns: 1fr;
-  }
-  
-  .checkout-summary {
-    position: relative;
-    top: 0;
-  }
-  
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .checkout-container {
-    padding: 0 1rem;
-  }
-  
-  .checkout-form-section {
-    padding: 1.5rem;
-  }
-}

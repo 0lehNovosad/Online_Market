@@ -281,24 +281,3 @@
     padding-bottom: 1.5rem;
   }
 }
-  .cabinet-container {
-    padding: 0 1rem;
-  }
-  
-  .cabinet-title {
-    font-size: 2rem;
-  }
-  
-  .cabinet-content {
-    padding: 1.5rem;
-  }
-  
-  .avatar-container {
-    width: 150px;
-    height: 150px;
-  }
-  
-  .avatar-icon {
-    font-size: 4rem;
-  }
-}
