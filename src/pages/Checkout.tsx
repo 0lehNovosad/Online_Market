@@ -25,14 +25,11 @@ export const Checkout: React.FC<CheckoutProps> = ({ cartItems, onOrderComplete }
     deliveryMethod: 'courier'
   });
 
-  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
-
   useEffect(() => {
     // Завантажуємо профіль з localStorage
     const savedProfile = localStorage.getItem('userProfile');
     if (savedProfile) {
-      const profile = JSON.parse(savedProfile);
-      setUserProfile(profile);
+      const profile = JSON.parse(savedProfile) as UserProfile;
       setFormData(prev => ({
         ...prev,
         name: profile.name || '',

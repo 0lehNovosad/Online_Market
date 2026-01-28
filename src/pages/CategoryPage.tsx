@@ -51,7 +51,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ onAddToCart }) => {
       list = list.filter((p) => {
         const name = pickText(p.name, lang).toLowerCase();
         const desc = pickText(p.description, lang).toLowerCase();
-        const full = pickText(p.fullDescription, lang).toLowerCase();
+        const full = p.fullDescription ? pickText(p.fullDescription, lang).toLowerCase() : '';
         const brand = (p.brand ?? '').toLowerCase();
         return (
           name.includes(q) ||

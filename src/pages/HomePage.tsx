@@ -13,7 +13,7 @@ interface HomePageProps {
   onCatalogClick?: () => void;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ onAddToCart, onCatalogClick }) => {
+export const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {
   const categoryProducts = useMemo(() => {
     const result: Record<string, Product[]> = {};
     
