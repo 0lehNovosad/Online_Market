@@ -1,0 +1,128 @@
+.banner-section {
+  margin-bottom: 2rem;
+}
+
+.banner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.banner-card {
+  border-radius: 20px;
+  padding: 2rem;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.12);
+}
+
+.banner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 44px rgba(102, 126, 234, 0.22);
+}
+
+.banner-card.promo {
+  background: linear-gradient(135deg, #111827 0%, #000000 100%);
+}
+
+.banner-card.main {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.banner-card.sale {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.banner-content {
+  z-index: 1;
+  position: relative;
+}
+
+.banner-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.banner-content p {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.banner-emoji {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  opacity: 0.28;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.15));
+}
+
+@media (max-width: 1024px) {
+  .banner-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .banner-card {
+    padding: 1.5rem;
+    min-height: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .banner-card {
+    padding: 1.25rem;
+    min-height: 100px;
+    border-radius: 18px;
+  }
+
+  .banner-content h3 {
+    font-size: 1.125rem;
+  }
+
+  .banner-content p {
+    font-size: 0.8125rem;
+  }
+
+  .banner-emoji {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-card {
+    padding: 1rem;
+    min-height: 90px;
+    border-radius: 16px;
+  }
+
+  .banner-content h3 {
+    font-size: 1rem;
+  }
+
+  .banner-content p {
+    font-size: 0.75rem;
+  }
+
+  .banner-emoji {
+    font-size: 1.5rem;
+    right: 0.5rem;
+  }
+}
