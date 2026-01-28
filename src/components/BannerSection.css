@@ -9,9 +9,9 @@
 }
 
 .banner-card {
-  border-radius: 20px;
+  border-radius: var(--radius);
   padding: 2rem;
-  color: #ffffff;
+  color: var(--text);
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -19,25 +19,26 @@
   min-height: 150px;
   display: flex;
   align-items: center;
-  border: 2px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.12);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  background: var(--surface);
 }
 
 .banner-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 44px rgba(102, 126, 234, 0.22);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
 .banner-card.promo {
-  background: linear-gradient(135deg, #111827 0%, #000000 100%);
+  background: var(--surface);
 }
 
 .banner-card.main {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--surface);
 }
 
 .banner-card.sale {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: var(--surface);
 }
 
 .banner-content {
@@ -56,7 +57,15 @@
   margin: 0;
   font-size: 0.875rem;
   font-weight: 500;
-  opacity: 0.9;
+  opacity: 1;
+  color: var(--muted);
+}
+
+.banner-cta-btn {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
 }
 
 .banner-emoji {
@@ -65,8 +74,8 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 3rem;
-  opacity: 0.28;
-  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.15));
+  opacity: 0.12;
+  filter: none;
 }
 
 @media (max-width: 1024px) {

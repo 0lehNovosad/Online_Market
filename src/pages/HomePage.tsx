@@ -11,6 +11,7 @@ import './HomePage.css';
 interface HomePageProps {
   onAddToCart: (product: Product) => void;
   onCatalogClick?: () => void;
+  onQuickView?: (product: Product) => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {

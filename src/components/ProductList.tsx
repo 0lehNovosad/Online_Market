@@ -7,9 +7,10 @@ import './ProductList.css';
 interface ProductListProps {
   products: Product[];
   onAddToCart: (product: Product) => void;
+  onQuickView?: (product: Product) => void;
 }
 
-export const ProductList: React.FC<ProductListProps> = ({ products, onAddToCart }) => {
+export const ProductList: React.FC<ProductListProps> = ({ products, onAddToCart, onQuickView }) => {
   const { t } = useI18n();
   return (
     <div className="product-list-container">
@@ -25,6 +26,7 @@ export const ProductList: React.FC<ProductListProps> = ({ products, onAddToCart 
               key={product.id}
               product={product}
               onAddToCart={onAddToCart}
+              onQuickView={onQuickView}
             />
           ))}
         </div>

@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
 import { PersonalCabinet } from './pages/PersonalCabinet';
 import { Login } from './pages/Login';
+import { WishlistPage } from './pages/WishlistPage';
 import { Checkout } from './pages/Checkout';
 import { CategoryPage } from './pages/CategoryPage';
 import { ProductPage } from './components/ProductPage';
@@ -12,16 +13,45 @@ import { Cart } from './components/Cart';
 import { ChatAssistant } from './components/ChatAssistant';
 import { CatalogMenu } from './components/CatalogMenu';
 import { BottomNav } from './components/BottomNav';
+import { Footer } from './components/Footer';
+import { QuickViewModal } from './components/QuickViewModal';
 import { I18nProvider } from './i18n/I18nProvider';
 import { AuthProvider } from './context/AuthContext';
+import { ToastProvider } from './context/ToastContext';
+import { WishlistProvider } from './context/WishlistContext';
+import { ThemeProvider } from './context/ThemeContext';
 import './App.css';
 
+const CART_STORAGE_KEY = 'online_market_cart';
+
+function loadCart(): CartItem[] {
+  try {
+    const raw = localStorage.getItem(CART_STORAGE_KEY);
+    if (!raw) return [];
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveCart(items: CartItem[]) {
+  try {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+  } catch {}
+}
+
 function AppInner() {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>(loadCart);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
+  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    saveCart(cartItems);
+  }, [cartItems]);
 
   useEffect(() => {
     // Close catalog on route changes
@@ -90,9 +120,10 @@ function AppInner() {
       <CatalogMenu isOpen={isCatalogOpen} onClose={() => setIsCatalogOpen(false)} />
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<HomePage onAddToCart={addToCart} onCatalogClick={() => setIsCatalogOpen((v) => !v)} />} />
-          <Route path="/category/:category" element={<CategoryPage onAddToCart={addToCart} />} />
+          <Route path="/" element={<HomePage onAddToCart={addToCart} onCatalogClick={() => setIsCatalogOpen((v) => !v)} onQuickView={setQuickViewProduct} />} />
+          <Route path="/category/:category" element={<CategoryPage onAddToCart={addToCart} onQuickView={setQuickViewProduct} />} />
           <Route path="/product/:id" element={<ProductPage onAddToCart={addToCart} />} />
+          <Route path="/wishlist" element={<WishlistPage onAddToCart={addToCart} onQuickView={setQuickViewProduct} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<PersonalCabinet />} />
           <Route
@@ -116,11 +147,18 @@ function AppInner() {
         onUpdateQuantity={updateQuantity}
         onRemoveItem={removeItem}
       />
+      <QuickViewModal
+        product={quickViewProduct}
+        onClose={() => setQuickViewProduct(null)}
+        onAddToCart={(p) => { addToCart(p); setQuickViewProduct(null); }}
+        onGoToProduct={(id) => { navigate(`/product/${id}`); setQuickViewProduct(null); }}
+      />
       <ChatAssistant onAddToCart={addToCart} />
       <BottomNav 
         cartItemCount={cartItemCount}
         onCartClick={() => setIsCartOpen(true)}
       />
+      <Footer />
     </div>
   );
 }
@@ -128,16 +166,22 @@ function AppInner() {
 function App() {
   return (
     <I18nProvider>
-      <AuthProvider>
-        <Router
-          future={{
-            v7_startTransition: true,
-            v7_relativeSplatPath: true
-          }}
-        >
-          <AppInner />
-        </Router>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <WishlistProvider>
+            <ToastProvider>
+              <Router
+                future={{
+                  v7_startTransition: true,
+                  v7_relativeSplatPath: true
+                }}
+              >
+                <AppInner />
+              </Router>
+            </ToastProvider>
+          </WishlistProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </I18nProvider>
   );
 }

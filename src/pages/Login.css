@@ -107,25 +107,16 @@
 }
 
 .login-submit-btn {
-  background: #111827;
-  color: white;
-  border: none;
   padding: 0.875rem 1.5rem;
-  border-radius: 6px;
+  border-radius: 16px;
   font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
   margin-top: 0.5rem;
-}
-
-.login-submit-btn:hover:not(:disabled) {
-  background: #1f2937;
 }
 
 .login-submit-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  background: #9ca3af !important;
 }
 
 .login-footer {

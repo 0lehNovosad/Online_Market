@@ -201,12 +201,12 @@ export const PersonalCabinet: React.FC = () => {
             </div>
 
             <div className="profile-actions">
-              <button type="submit" className="save-btn">
+              <button type="submit" className="save-btn btn-primary">
                 {t('profile.save')}
               </button>
               <button
                 type="button"
-                className="logout-btn"
+                className="logout-btn btn-secondary"
                 onClick={() => {
                   logout();
                   navigate('/');

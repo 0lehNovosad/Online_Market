@@ -5,7 +5,7 @@
   width: 60px;
   height: 60px;
   border-radius: 18px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--accent);
   border: none;
   color: white;
   font-size: 1.5rem;
@@ -15,16 +15,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.35);
+  box-shadow: var(--shadow);
 }
 
 .chat-toggle:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 40px rgba(102, 126, 234, 0.45);
+  box-shadow: var(--shadow-hover);
 }
 
 .chat-toggle.open {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: var(--accent-hover);
   color: #ffffff;
 }
 
@@ -34,9 +34,10 @@
   right: 2rem;
   width: 380px;
   height: 600px;
-  background: white;
-  border-radius: 0;
-  border: 1px solid #e5e7eb;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
   z-index: 1001;
   display: flex;
   flex-direction: column;
@@ -279,14 +280,14 @@
 }
 
 .message.user .message-content {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--accent);
   color: white;
   border-bottom-right-radius: 4px;
 }
 
 .message.assistant .message-content {
-  background: #f7fafc;
-  color: #2d3748;
+  background: var(--bg);
+  color: var(--text);
   border-bottom-left-radius: 4px;
 }
 
@@ -299,8 +300,8 @@
 
 .chat-input-container {
   padding: 1rem;
-  border-top: 1px solid #e2e8f0;
-  background: #f7fafc;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
   display: flex;
   gap: 0.5rem;
 }
@@ -308,7 +309,7 @@
 .chat-input {
   flex: 1;
   padding: 0.75rem 1rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   border-radius: 12px;
   font-size: 0.9rem;
   outline: none;
@@ -316,14 +317,15 @@
 }
 
 .chat-input:focus {
-  border-color: #667eea;
+  border-color: rgba(37, 99, 235, 0.5);
+  box-shadow: 0 0 0 3px var(--ring);
 }
 
 .chat-send {
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--accent);
   border: none;
   color: white;
   font-size: 1.2rem;
@@ -336,7 +338,8 @@
 
 .chat-send:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  background: var(--accent-hover);
+  box-shadow: var(--shadow);
 }
 
 @media (max-width: 1024px) {

@@ -80,9 +80,8 @@ export const CatalogMenu: React.FC<CatalogMenuProps> = ({ isOpen, onClose }) => 
                 {active.subcategories.map((sub, idx) => (
                   <section key={`${sub.key}-${idx}`} className="catalog-subcategory-section">
                     <div className="catalog-subcategory-header">
-                      <span className="catalog-subcategory-icon">📦</span>
+                      <span className="catalog-subcategory-icon"></span>
                       <h3 className="catalog-subcategory-title">{pickText(sub.label, lang)}</h3>
-                      <span className="catalog-subcategory-arrow">→</span>
                     </div>
                     {sub.items && sub.items.length > 0 ? (
                       <>

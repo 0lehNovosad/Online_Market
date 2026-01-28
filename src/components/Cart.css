@@ -21,13 +21,13 @@
 }
 
 .cart-sidebar {
-  background: white;
+  background: var(--surface);
   width: 100%;
   max-width: 450px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid #e5e7eb;
+  border-left: 1px solid var(--border);
   animation: slideIn 0.3s ease;
 }
 
@@ -42,12 +42,12 @@
 
 .cart-header {
   padding: 1.5rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #ffffff;
-  color: #111827;
+  background: var(--surface);
+  color: var(--text);
 }
 
 .cart-header h2 {
@@ -59,8 +59,8 @@
 
 .close-btn {
   background: transparent;
-  border: 1px solid #e5e7eb;
-  color: #000000;
+  border: 1px solid var(--border);
+  color: var(--text);
   font-size: 1.5rem;
   width: 32px;
   height: 32px;
@@ -89,7 +89,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #a0aec0;
+  color: var(--muted);
   font-size: 1.2rem;
 }
 
@@ -108,9 +108,9 @@
   display: flex;
   gap: 1rem;
   padding: 1rem;
-  background: #ffffff;
+  background: var(--surface);
   border-radius: 0;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
 }
 
 .cart-item-image {
@@ -118,7 +118,7 @@
   height: 80px;
   object-fit: cover;
   border-radius: 0;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
 }
 
 .cart-item-info {
@@ -131,13 +131,13 @@
 .cart-item-info h4 {
   margin: 0;
   font-size: 0.9375rem;
-  color: #000000;
+  color: var(--text);
   font-weight: 400;
   letter-spacing: -0.01em;
 }
 
 .cart-item-price {
-  color: #000000;
+  color: var(--text);
   font-weight: 400;
   font-size: 0.875rem;
 }
@@ -150,7 +150,7 @@
 }
 
 .quantity-btn {
-  background: #000000;
+  background: var(--accent);
   color: white;
   border: none;
   width: 28px;
@@ -177,14 +177,14 @@
   min-width: 30px;
   text-align: center;
   font-weight: 400;
-  color: #000000;
+  color: var(--text);
   font-size: 0.875rem;
 }
 
 .remove-btn {
-  background: #000000;
-  color: white;
-  border: none;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
   padding: 0.25rem 0.5rem;
   border-radius: 0;
   cursor: pointer;
@@ -201,8 +201,8 @@
 
 .cart-footer {
   padding: 1.5rem;
-  border-top: 1px solid #e5e7eb;
-  background: #ffffff;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
 }
 
 .cart-total {
@@ -212,11 +212,11 @@
   margin-bottom: 1rem;
   font-size: 1rem;
   font-weight: 400;
-  color: #000000;
+  color: var(--text);
 }
 
 .total-price {
-  color: #000000;
+  color: var(--text);
   font-size: 1.25rem;
   font-weight: 400;
 }

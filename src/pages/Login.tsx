@@ -141,7 +141,7 @@ export const Login: React.FC = () => {
 
             <button
               type="submit"
-              className="login-submit-btn"
+              className="login-submit-btn btn-primary"
               disabled={loading}
             >
               {loading ? t('auth.loading') : (isLogin ? t('auth.loginBtn') : t('auth.registerBtn'))}

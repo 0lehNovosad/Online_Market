@@ -46,7 +46,7 @@ export const CategorySection: React.FC<CategorySectionProps> = ({
     <div className="category-section">
       <div className="category-section-header">
         <h2 className="category-section-title">{pickText(categoryLabel, lang)}</h2>
-        <button className="category-view-all-btn" onClick={handleViewAll}>
+        <button className="category-view-all-btn btn-secondary" onClick={handleViewAll}>
           {t('bestOffers.viewAll').replace(' →', '')}
         </button>
       </div>
@@ -112,7 +112,7 @@ export const CategorySection: React.FC<CategorySectionProps> = ({
                 </div>
 
                 <button
-                  className="category-add-to-cart-btn"
+                  className="category-add-to-cart-btn btn-primary"
                   onClick={(e) => {
                     e.stopPropagation();
                     onAddToCart(product);

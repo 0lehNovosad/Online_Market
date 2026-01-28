@@ -43,6 +43,10 @@ export type TranslationKey =
   | 'checkout.shipping.free'
   | 'checkout.shipping.carrier'
   | 'checkout.toPay'
+  | 'checkout.progress.cart'
+  | 'checkout.progress.info'
+  | 'checkout.progress.payment'
+  | 'checkout.progress.confirm'
   | 'bestOffers.title'
   | 'bestOffers.viewAll'
   | 'category.catalog'
@@ -70,6 +74,12 @@ export type TranslationKey =
   | 'product.spec.price'
   | 'product.spec.id'
   | 'product.spec.brand'
+  | 'product.reviews'
+  | 'product.reviews.title'
+  | 'product.reviews.rating'
+  | 'product.reviews.write'
+  | 'product.recommended'
+  | 'product.recommended.title'
   | 'header.storeName'
   | 'header.voiceSearch'
   | 'profile.remove'
@@ -115,7 +125,28 @@ export type TranslationKey =
   | 'auth.error'
   | 'auth.loading'
   | 'header.login'
-  | 'profile.logout';
+  | 'profile.logout'
+  | 'filters.sort'
+  | 'filters.sort.relevance'
+  | 'filters.sort.priceAsc'
+  | 'filters.sort.priceDesc'
+  | 'filters.sort.nameAsc'
+  | 'filters.sort.nameDesc'
+  | 'filters.price'
+  | 'filters.priceFrom'
+  | 'filters.priceTo'
+  | 'filters.apply'
+  | 'filters.clear'
+  | 'filters.resetAll'
+  | 'product.quickView'
+  | 'product.quickBuy'
+  | 'product.faq.title'
+  | 'product.boughtTogether.title'
+  | 'checkout.guestNote'
+  | 'theme.dark'
+  | 'theme.light'
+  | 'wishlist.title'
+  | 'wishlist.empty';
 
 export const translations: Record<Lang, Record<TranslationKey, string>> = {
   uk: {
@@ -161,6 +192,10 @@ export const translations: Record<Lang, Record<TranslationKey, string>> = {
     'checkout.shipping.free': 'Безкоштовно',
     'checkout.shipping.carrier': 'За тарифами перевізника',
     'checkout.toPay': 'До сплати:',
+    'checkout.progress.cart': 'Кошик',
+    'checkout.progress.info': 'Дані',
+    'checkout.progress.payment': 'Оплата',
+    'checkout.progress.confirm': 'Підтвердження',
     'bestOffers.title': 'Найкращі пропозиції',
     'bestOffers.viewAll': 'Дивитися всі →',
     'category.catalog': 'Каталог',
@@ -214,6 +249,12 @@ export const translations: Record<Lang, Record<TranslationKey, string>> = {
     'product.spec.price': 'Ціна:',
     'product.spec.id': 'ID товару:',
     'product.spec.brand': 'Бренд:',
+    'product.reviews': 'Відгуки',
+    'product.reviews.title': 'Відгуки покупців',
+    'product.reviews.rating': 'Рейтинг',
+    'product.reviews.write': 'Написати відгук',
+    'product.recommended': 'Рекомендовані товари',
+    'product.recommended.title': 'Також рекомендуємо',
     'auth.login': 'Увійти',
     'auth.register': 'Реєстрація',
     'auth.loginTitle': 'Вхід в акаунт',
@@ -233,7 +274,28 @@ export const translations: Record<Lang, Record<TranslationKey, string>> = {
     'auth.error': 'Сталася помилка. Спробуйте ще раз.',
     'auth.loading': 'Завантаження...',
     'header.login': 'Увійти',
-    'profile.logout': 'Вийти'
+    'profile.logout': 'Вийти',
+    'filters.sort': 'Сортування',
+    'filters.sort.relevance': 'За релевантністю',
+    'filters.sort.priceAsc': 'Ціна: зростання',
+    'filters.sort.priceDesc': 'Ціна: спадання',
+    'filters.sort.nameAsc': 'Назва: A → Я',
+    'filters.sort.nameDesc': 'Назва: Я → A',
+    'filters.price': 'Ціна',
+    'filters.priceFrom': 'Від',
+    'filters.priceTo': 'До',
+    'filters.apply': 'Застосувати',
+    'filters.clear': 'Очистити',
+    'filters.resetAll': 'Скинути всі фільтри',
+    'product.quickView': 'Швидкий перегляд',
+    'product.quickBuy': 'Швидко купити',
+    'product.faq.title': 'Часті питання',
+    'product.boughtTogether.title': 'Разом купують',
+    'checkout.guestNote': 'Оформлення без реєстрації',
+    'theme.dark': 'Темна тема',
+    'theme.light': 'Світла тема',
+    'wishlist.title': 'Обране',
+    'wishlist.empty': 'У обраному поки нічого немає'
   },
   en: {
     'nav.promos': 'Deals',
@@ -278,6 +340,10 @@ export const translations: Record<Lang, Record<TranslationKey, string>> = {
     'checkout.shipping.free': 'Free',
     'checkout.shipping.carrier': 'Carrier rates apply',
     'checkout.toPay': 'Amount due:',
+    'checkout.progress.cart': 'Cart',
+    'checkout.progress.info': 'Information',
+    'checkout.progress.payment': 'Payment',
+    'checkout.progress.confirm': 'Confirmation',
     'bestOffers.title': 'Best offers',
     'bestOffers.viewAll': 'View all →',
     'category.catalog': 'Catalog',
@@ -331,6 +397,12 @@ export const translations: Record<Lang, Record<TranslationKey, string>> = {
     'product.spec.price': 'Price:',
     'product.spec.id': 'Product ID:',
     'product.spec.brand': 'Brand:',
+    'product.reviews': 'Reviews',
+    'product.reviews.title': 'Customer Reviews',
+    'product.reviews.rating': 'Rating',
+    'product.reviews.write': 'Write a review',
+    'product.recommended': 'Recommended Products',
+    'product.recommended.title': 'You may also like',
     'auth.login': 'Login',
     'auth.register': 'Register',
     'auth.loginTitle': 'Sign in',
@@ -350,7 +422,28 @@ export const translations: Record<Lang, Record<TranslationKey, string>> = {
     'auth.error': 'An error occurred. Please try again.',
     'auth.loading': 'Loading...',
     'header.login': 'Login',
-    'profile.logout': 'Logout'
+    'profile.logout': 'Logout',
+    'filters.sort': 'Sort',
+    'filters.sort.relevance': 'Relevance',
+    'filters.sort.priceAsc': 'Price: low to high',
+    'filters.sort.priceDesc': 'Price: high to low',
+    'filters.sort.nameAsc': 'Name: A → Z',
+    'filters.sort.nameDesc': 'Name: Z → A',
+    'filters.price': 'Price',
+    'filters.priceFrom': 'From',
+    'filters.priceTo': 'To',
+    'filters.apply': 'Apply',
+    'filters.clear': 'Clear',
+    'filters.resetAll': 'Reset all filters',
+    'product.quickView': 'Quick view',
+    'product.quickBuy': 'Quick buy',
+    'product.faq.title': 'FAQ',
+    'product.boughtTogether.title': 'Frequently bought together',
+    'checkout.guestNote': 'Checkout as guest',
+    'theme.dark': 'Dark mode',
+    'theme.light': 'Light mode',
+    'wishlist.title': 'Wishlist',
+    'wishlist.empty': 'Your wishlist is empty'
   }
 };
 

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartItem } from '../types';
 import { UserProfile } from '../types';
 import { useI18n } from '../i18n/I18nProvider';
+import { useToast } from '../context/ToastContext';
 import { pickText } from '../i18n/text';
 import './Checkout.css';
 
@@ -14,6 +15,7 @@ interface CheckoutProps {
 export const Checkout: React.FC<CheckoutProps> = ({ cartItems, onOrderComplete }) => {
   const navigate = useNavigate();
   const { t, lang } = useI18n();
+  const { showToast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -66,7 +68,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ cartItems, onOrderComplete }
     
     // Валідація
     if (!formData.name || !formData.email || !formData.phone || !formData.address) {
-      alert(lang === 'en' ? 'Please fill in all required fields' : "Будь ласка, заповніть всі обов'язкові поля");
+      showToast(lang === 'en' ? 'Please fill in all required fields' : "Будь ласка, заповніть всі обов'язкові поля", 'error');
       return;
     }
 
@@ -89,10 +91,11 @@ export const Checkout: React.FC<CheckoutProps> = ({ cartItems, onOrderComplete }
     onOrderComplete();
 
     // Показуємо підтвердження
-    alert(
+    showToast(
       lang === 'en'
         ? `Order #${order.id} has been placed successfully! Thank you for your purchase!`
-        : `Замовлення №${order.id} успішно оформлено! Дякуємо за покупку!`
+        : `Замовлення №${order.id} успішно оформлено! Дякуємо за покупку!`,
+      'success'
     );
     
     // Переходимо на головну
@@ -123,6 +126,29 @@ export const Checkout: React.FC<CheckoutProps> = ({ cartItems, onOrderComplete }
         </button>
         
         <h1 className="checkout-title">{t('checkout.title')}</h1>
+        <p className="checkout-guest-note">{t('checkout.guestNote')}</p>
+        
+        <div className="checkout-progress">
+          <div className="progress-step completed">
+            <div className="progress-step-number">1</div>
+            <span className="progress-step-label">{t('checkout.progress.cart')}</span>
+          </div>
+          <div className="progress-line completed"></div>
+          <div className="progress-step active">
+            <div className="progress-step-number">2</div>
+            <span className="progress-step-label">{t('checkout.progress.info')}</span>
+          </div>
+          <div className="progress-line"></div>
+          <div className="progress-step">
+            <div className="progress-step-number">3</div>
+            <span className="progress-step-label">{t('checkout.progress.payment')}</span>
+          </div>
+          <div className="progress-line"></div>
+          <div className="progress-step">
+            <div className="progress-step-number">4</div>
+            <span className="progress-step-label">{t('checkout.progress.confirm')}</span>
+          </div>
+        </div>
         
         <div className="checkout-content">
           <div className="checkout-form-section">
@@ -255,7 +281,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ cartItems, onOrderComplete }
                 </div>
               </div>
 
-              <button type="submit" className="submit-order-btn">
+              <button type="submit" className="submit-order-btn btn-primary">
                 {t('checkout.confirm')}
               </button>
             </form>

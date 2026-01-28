@@ -51,7 +51,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ cartItemCount, onCartClick
         )}
       </button>
       
-      <Link to="/favorites" className={`bottom-nav-item ${isActive('/favorites') ? 'active' : ''}`}>
+      <Link to="/wishlist" className={`bottom-nav-item ${isActive('/wishlist') ? 'active' : ''}`}>
         <span className="bottom-nav-icon">❤️</span>
         <span className="bottom-nav-label">{t('bottomNav.favorites')}</span>
       </Link>
