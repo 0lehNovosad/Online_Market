@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Product } from '../types';
 import { products } from '../data/products';
@@ -9,6 +9,8 @@ import { pickText } from '../i18n/text';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import './CategoryPage.css';
 
+const PRODUCTS_LOAD_DELAY_MS = 400;
+
 interface CategoryPageProps {
   onAddToCart: (product: Product) => void;
   onQuickView?: (product: Product) => void;
@@ -18,6 +20,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ onAddToCart, onQuick
   const { t, lang } = useI18n();
   const navigate = useNavigate();
   const { category } = useParams<{ category: string }>();
+  const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const filter = (searchParams.get('filter') ?? '').trim().toLowerCase();
   const q = (searchParams.get('q') ?? '').trim().toLowerCase();
@@ -91,6 +94,11 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ onAddToCart, onQuick
     }
     return list;
   }, [decodedCategory, filter, q, lang, minPrice, maxPrice, sort]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), PRODUCTS_LOAD_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, []);
 
   const applyFilters = () => {
     const next = new URLSearchParams(searchParams);
@@ -198,7 +206,13 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ onAddToCart, onQuick
           )}
         </div>
 
-        <ProductList products={filtered} onAddToCart={onAddToCart} onQuickView={onQuickView} />
+        <ProductList
+          products={filtered}
+          onAddToCart={onAddToCart}
+          onQuickView={onQuickView}
+          loading={loading}
+          skeletonCount={12}
+        />
       </div>
     </div>
   );

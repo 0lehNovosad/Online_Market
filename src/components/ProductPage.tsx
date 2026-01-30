@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Product } from '../types';
 import { products } from '../data/products';
@@ -7,7 +7,10 @@ import { pickText } from '../i18n/text';
 import { getCategoryLabel } from '../data/catalogLookup';
 import { Breadcrumbs } from './Breadcrumbs';
 import { useToast } from '../context/ToastContext';
+import { SkeletonRelatedGrid } from './Skeleton';
 import './ProductPage.css';
+
+const RELATED_LOAD_DELAY_MS = 250;
 
 const PRODUCT_FAQ = [
   { q: { uk: 'Яка гарантія на товар?', en: 'What is the warranty?' }, a: { uk: 'Офіційна гарантія виробника 12–24 міс.', en: 'Official manufacturer warranty 12–24 months.' } },
@@ -25,8 +28,15 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onAddToCart }) => {
   const { t, lang } = useI18n();
   const { showToast } = useToast();
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
-  
+  const [relatedLoading, setRelatedLoading] = useState(true);
+
   const product = products.find((p) => p.id === Number(id));
+
+  useEffect(() => {
+    setRelatedLoading(true);
+    const timer = setTimeout(() => setRelatedLoading(false), RELATED_LOAD_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, [id]);
 
   if (!product) {
     return (
@@ -166,25 +176,29 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onAddToCart }) => {
         {/* Bought together */}
         <div className="product-bought-together">
           <h2>{t('product.boughtTogether.title')}</h2>
-          <div className="bought-together-grid">
-            {products
-              .filter((p) => p.categoryKey === product.categoryKey && p.id !== product.id)
-              .slice(0, 3)
-              .map((p) => (
-                <div key={p.id} className="bought-together-card" onClick={() => navigate(`/product/${p.id}`)}>
-                  <img src={p.image} alt={pickText(p.name, lang)} loading="lazy" />
-                  <span className="bought-together-name">{pickText(p.name, lang)}</span>
-                  <span className="bought-together-price">{formatPrice(p.price)}</span>
-                  <button
-                    type="button"
-                    className="btn-primary bought-together-add"
-                    onClick={(e) => { e.stopPropagation(); onAddToCart(p); showToast(t('product.addedToCart'), 'success'); }}
-                  >
-                    {t('product.addToCart')}
-                  </button>
-                </div>
-              ))}
-          </div>
+          {relatedLoading ? (
+            <SkeletonRelatedGrid count={3} className="bought-together-grid" />
+          ) : (
+            <div className="bought-together-grid">
+              {products
+                .filter((p) => p.categoryKey === product.categoryKey && p.id !== product.id)
+                .slice(0, 3)
+                .map((p) => (
+                  <div key={p.id} className="bought-together-card" onClick={() => navigate(`/product/${p.id}`)}>
+                    <img src={p.image} alt={pickText(p.name, lang)} loading="lazy" />
+                    <span className="bought-together-name">{pickText(p.name, lang)}</span>
+                    <span className="bought-together-price">{formatPrice(p.price)}</span>
+                    <button
+                      type="button"
+                      className="btn-primary bought-together-add"
+                      onClick={(e) => { e.stopPropagation(); onAddToCart(p); showToast(t('product.addedToCart'), 'success'); }}
+                    >
+                      {t('product.addToCart')}
+                    </button>
+                  </div>
+                ))}
+            </div>
+          )}
         </div>
 
         {/* Reviews Section */}
@@ -219,18 +233,22 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onAddToCart }) => {
         {/* Recommended Products */}
         <div className="product-recommended-section">
           <h2>{t('product.recommended.title')}</h2>
-          <div className="recommended-products-grid">
-            {products
-              .filter(p => p.categoryKey === product.categoryKey && p.id !== product.id)
-              .slice(0, 4)
-              .map((recProduct) => (
-                <div key={recProduct.id} className="recommended-product-card" onClick={() => navigate(`/product/${recProduct.id}`)}>
-                  <img src={recProduct.image} alt={pickText(recProduct.name, lang)} loading="lazy" />
-                  <h4>{pickText(recProduct.name, lang)}</h4>
-                  <div className="recommended-product-price">{formatPrice(recProduct.price)}</div>
-                </div>
-              ))}
-          </div>
+          {relatedLoading ? (
+            <SkeletonRelatedGrid count={4} className="recommended-products-grid" />
+          ) : (
+            <div className="recommended-products-grid">
+              {products
+                .filter(p => p.categoryKey === product.categoryKey && p.id !== product.id)
+                .slice(0, 4)
+                .map((recProduct) => (
+                  <div key={recProduct.id} className="recommended-product-card" onClick={() => navigate(`/product/${recProduct.id}`)}>
+                    <img src={recProduct.image} alt={pickText(recProduct.name, lang)} loading="lazy" />
+                    <h4>{pickText(recProduct.name, lang)}</h4>
+                    <div className="recommended-product-price">{formatPrice(recProduct.price)}</div>
+                  </div>
+                ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Product } from '../types';
 import { useI18n } from '../i18n/I18nProvider';
 import { pickText } from '../i18n/text';
-import { getCategoryLabel } from '../data/catalogLookup';
 import { useWishlist } from '../context/WishlistContext';
 import './ProductCard.css';
 
@@ -47,8 +46,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
 
   const inWishlist = isInWishlist(product.id);
 
+  const oldPrice = Math.round(product.price * 1.22);
+  const discountPercent = Math.round(((oldPrice - product.price) / oldPrice) * 100);
+  const rating = (4.2 + (product.id % 8) / 10).toFixed(1);
+  const reviewCount = 30 + (product.id % 100);
+
   return (
-    <div className="product-card" onClick={handleCardClick}>
+    <div className="product-card product-card--v2" onClick={handleCardClick}>
       <div className="product-image">
         <img
           src={product.image}
@@ -56,7 +60,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
           loading="lazy"
           decoding="async"
         />
-        <span className="product-category">{getCategoryLabel(product.categoryKey, lang)}</span>
+        <span className="product-benefit-badge">
+          {t('product.benefit')} {discountPercent}%
+        </span>
         <button
           type="button"
           className={`product-wishlist-btn ${inWishlist ? 'active' : ''}`}
@@ -79,24 +85,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
       </div>
       <div className="product-info">
         <h3 className="product-name">{pickText(product.name, lang)}</h3>
-        <p className="product-description">{pickText(product.description, lang)}</p>
-        <div className="product-footer">
-          <span className="product-price">{formatPrice(product.price)}</span>
-          <div className="product-actions">
-            <button
-              className="quick-buy-btn btn-primary"
-              onClick={handleAddToCart}
-            >
-              {t('product.quickBuy')}
-            </button>
-            <button
-              className="add-to-cart-btn btn-secondary"
-              onClick={handleAddToCart}
-            >
-              {t('product.addToCart')}
-            </button>
-          </div>
+        <div className="product-rating">
+          <span className="product-rating-stars">{'★'.repeat(Math.floor(parseFloat(rating)))}</span>
+          <span className="product-rating-value">{rating}</span>
+          <span className="product-rating-count">({reviewCount})</span>
         </div>
+        <div className="product-prices">
+          <span className="product-old-price">{formatPrice(oldPrice)}</span>
+          <span className="product-price">{formatPrice(product.price)}</span>
+        </div>
+        <button
+          type="button"
+          className="product-add-cart-btn"
+          onClick={handleAddToCart}
+        >
+          {t('product.addToCart').toUpperCase()}
+        </button>
       </div>
     </div>
   );

@@ -16,7 +16,7 @@
   margin: 0;
   font-size: 1.25rem;
   font-weight: 400;
-  color: #000000;
+  color: var(--text);
   letter-spacing: -0.01em;
 }
 
@@ -24,7 +24,7 @@
   display: flex;
   gap: 0.5rem;
   font-size: 0.8125rem;
-  color: #6b7280;
+  color: var(--muted);
   font-weight: 400;
 }
 
@@ -35,24 +35,27 @@
 }
 
 .product-of-day-card {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   overflow: hidden;
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   position: relative;
+  box-shadow: var(--shadow-sm);
 }
 
 .product-of-day-card:hover {
-  border-color: #10b981;
+  border-color: rgba(79, 70, 229, 0.28);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
 }
 
 .product-of-day-image-wrapper {
   position: relative;
   width: 100%;
   padding-top: 75%;
-  background: #ffffff;
+  background: var(--bg);
   overflow: hidden;
 }
 
@@ -85,7 +88,7 @@
 .product-of-day-name {
   font-size: 0.8125rem;
   font-weight: 400;
-  color: #000000;
+  color: var(--text);
   margin: 0 0 0.5rem 0;
   line-height: 1.4;
   display: -webkit-box;
@@ -110,11 +113,11 @@
 
 .rating-value {
   font-weight: 600;
-  color: #000000;
+  color: var(--text);
 }
 
 .rating-reviews {
-  color: #6b7280;
+  color: var(--muted);
   font-size: 0.6875rem;
 }
 
@@ -127,7 +130,7 @@
 
 .old-price {
   font-size: 0.75rem;
-  color: #9ca3af;
+  color: var(--muted);
   text-decoration: line-through;
 }
 
@@ -143,7 +146,7 @@
   right: 0.875rem;
   width: 36px;
   height: 36px;
-  background: #000000;
+  background: var(--accent);
   color: white;
   border: none;
   border-radius: 50%;

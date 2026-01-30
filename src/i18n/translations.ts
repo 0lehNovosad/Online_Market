@@ -142,6 +142,7 @@ export type TranslationKey =
   | 'product.quickBuy'
   | 'product.faq.title'
   | 'product.boughtTogether.title'
+  | 'product.benefit'
   | 'checkout.guestNote'
   | 'theme.dark'
   | 'theme.light'
@@ -291,6 +292,7 @@ export const translations: Record<Lang, Record<TranslationKey, string>> = {
     'product.quickBuy': 'Швидко купити',
     'product.faq.title': 'Часті питання',
     'product.boughtTogether.title': 'Разом купують',
+    'product.benefit': 'ВИГОДА',
     'checkout.guestNote': 'Оформлення без реєстрації',
     'theme.dark': 'Темна тема',
     'theme.light': 'Світла тема',
@@ -439,6 +441,7 @@ export const translations: Record<Lang, Record<TranslationKey, string>> = {
     'product.quickBuy': 'Quick buy',
     'product.faq.title': 'FAQ',
     'product.boughtTogether.title': 'Frequently bought together',
+    'product.benefit': 'SAVE',
     'checkout.guestNote': 'Checkout as guest',
     'theme.dark': 'Dark mode',
     'theme.light': 'Light mode',

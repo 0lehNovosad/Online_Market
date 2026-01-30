@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Product } from '../types';
 import { products } from '../data/products';
 import { useWishlist } from '../context/WishlistContext';
@@ -6,6 +6,8 @@ import { ProductList } from '../components/ProductList';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { useI18n } from '../i18n/I18nProvider';
 import './WishlistPage.css';
+
+const WISHLIST_LOAD_DELAY_MS = 350;
 
 interface WishlistPageProps {
   onAddToCart: (product: Product) => void;
@@ -15,7 +17,13 @@ interface WishlistPageProps {
 export const WishlistPage: React.FC<WishlistPageProps> = ({ onAddToCart, onQuickView }) => {
   const { t } = useI18n();
   const { wishlistIds } = useWishlist();
+  const [loading, setLoading] = useState(true);
   const wishlistProducts = products.filter((p) => wishlistIds.has(p.id));
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), WISHLIST_LOAD_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="wishlist-page">
@@ -27,7 +35,15 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({ onAddToCart, onQuick
           ]}
         />
         <h1 className="wishlist-title">{t('wishlist.title')}</h1>
-        {wishlistProducts.length === 0 ? (
+        {loading ? (
+          <ProductList
+            products={[]}
+            onAddToCart={onAddToCart}
+            onQuickView={onQuickView}
+            loading
+            skeletonCount={6}
+          />
+        ) : wishlistProducts.length === 0 ? (
           <div className="wishlist-empty">
             <p>{t('wishlist.empty')}</p>
             <a href="/category/all" className="btn-primary">{t('category.catalog')}</a>

@@ -1,6 +1,6 @@
 .login-page {
   min-height: calc(100vh - 70px);
-  background: #f9fafb;
+  background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,17 +13,17 @@
 }
 
 .login-card {
-  background: white;
+  background: var(--surface);
   border-radius: 12px;
   padding: 2.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e5e7eb;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .login-title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--text);
   margin: 0 0 2rem 0;
   text-align: center;
 }
@@ -32,7 +32,7 @@
   display: flex;
   gap: 0.5rem;
   margin-bottom: 2rem;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 2px solid var(--border);
 }
 
 .login-tab {
@@ -43,19 +43,19 @@
   border-bottom: 2px solid transparent;
   font-size: 1rem;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--muted);
   cursor: pointer;
   transition: all 0.2s ease;
   margin-bottom: -2px;
 }
 
 .login-tab:hover {
-  color: #111827;
+  color: var(--text);
 }
 
 .login-tab.active {
-  color: #111827;
-  border-bottom-color: #111827;
+  color: var(--text);
+  border-bottom-color: var(--accent);
 }
 
 .login-error {
@@ -83,27 +83,28 @@
 .form-group label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #374151;
+  color: var(--muted);
 }
 
 .form-group input {
   padding: 0.75rem 1rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border);
   border-radius: 6px;
   font-size: 0.9rem;
   font-family: inherit;
   transition: border-color 0.2s ease;
-  background: #ffffff;
-  color: #111827;
+  background: var(--surface);
+  color: var(--text);
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #111827;
+  border-color: rgba(79, 70, 229, 0.6);
+  box-shadow: 0 0 0 3px var(--ring);
 }
 
 .form-group input::placeholder {
-  color: #9ca3af;
+  color: var(--muted);
 }
 
 .login-submit-btn {
@@ -125,14 +126,14 @@
 }
 
 .back-link {
-  color: #6b7280;
+  color: var(--muted);
   text-decoration: none;
   font-size: 0.875rem;
   transition: color 0.2s ease;
 }
 
 .back-link:hover {
-  color: #111827;
+  color: var(--text);
 }
 
 @media (max-width: 768px) {

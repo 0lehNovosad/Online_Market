@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Product } from '../types';
 import { products } from '../data/products';
 import { categoriesData } from '../data/categories';
@@ -6,7 +6,11 @@ import { BannerSection } from '../components/BannerSection';
 import { BestProducts } from '../components/BestProducts';
 import { CategorySection } from '../components/CategorySection';
 import { ProductOfDay } from '../components/ProductOfDay';
+import { SkeletonProductOfDay, SkeletonBestProducts, SkeletonProductGrid } from '../components/Skeleton';
+import { useI18n } from '../i18n/I18nProvider';
 import './HomePage.css';
+
+const HOME_LOAD_DELAY_MS = 450;
 
 interface HomePageProps {
   onAddToCart: (product: Product) => void;
@@ -14,7 +18,15 @@ interface HomePageProps {
   onQuickView?: (product: Product) => void;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {
+export const HomePage: React.FC<HomePageProps> = ({ onAddToCart, onQuickView }) => {
+  const { t } = useI18n();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), HOME_LOAD_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, []);
+
   const categoryProducts = useMemo(() => {
     const result: Record<string, Product[]> = {};
     
@@ -41,27 +53,39 @@ export const HomePage: React.FC<HomePageProps> = ({ onAddToCart }) => {
 
           <div className="main-sections">
             <div className="left-section">
-              {productOfDay && (
-                <ProductOfDay product={productOfDay} onAddToCart={onAddToCart} />
+              {loading ? (
+                <>
+                  <SkeletonProductOfDay />
+                  <SkeletonBestProducts />
+                  <div className="product-list-container">
+                    <h2 className="section-title">{t('products.catalogTitle')}</h2>
+                    <SkeletonProductGrid count={8} />
+                  </div>
+                </>
+              ) : (
+                <>
+                  {productOfDay && (
+                    <ProductOfDay product={productOfDay} onAddToCart={onAddToCart} />
+                  )}
+                  <BestProducts products={products} onAddToCart={onAddToCart} onQuickView={onQuickView} />
+                  {categoriesData.map((category) => {
+                    const categoryItems = categoryProducts[category.key];
+                    if (!categoryItems || categoryItems.length === 0) {
+                      return null;
+                    }
+                    return (
+                      <CategorySection
+                        key={category.key}
+                        categoryKey={category.key}
+                        categoryLabel={category.label}
+                        products={categoryItems}
+                        onAddToCart={onAddToCart}
+                        onQuickView={onQuickView}
+                      />
+                    );
+                  })}
+                </>
               )}
-              <BestProducts products={products} onAddToCart={onAddToCart} />
-              
-              {categoriesData.map((category) => {
-                const categoryItems = categoryProducts[category.key];
-                if (!categoryItems || categoryItems.length === 0) {
-                  return null;
-                }
-                
-                return (
-                  <CategorySection
-                    key={category.key}
-                    categoryKey={category.key}
-                    categoryLabel={category.label}
-                    products={categoryItems}
-                    onAddToCart={onAddToCart}
-                  />
-                );
-              })}
             </div>
           </div>
         </div>

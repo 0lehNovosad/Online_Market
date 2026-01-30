@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Product } from '../types';
 import { useI18n } from '../i18n/I18nProvider';
 import { pickText } from '../i18n/text';
+import { ProductCard } from './ProductCard';
 import './CategorySection.css';
 
 interface CategorySectionProps {
@@ -10,28 +11,19 @@ interface CategorySectionProps {
   categoryLabel: { uk: string; en: string };
   products: Product[];
   onAddToCart: (product: Product) => void;
+  onQuickView?: (product: Product) => void;
 }
 
 export const CategorySection: React.FC<CategorySectionProps> = ({
   categoryKey,
   categoryLabel,
   products,
-  onAddToCart
+  onAddToCart,
+  onQuickView
 }) => {
   const navigate = useNavigate();
   const { t, lang } = useI18n();
 
-  const formatPrice = (price: number): string => {
-    const locale = lang === 'en' ? 'en-US' : 'uk-UA';
-    return new Intl.NumberFormat(locale, {
-      style: 'currency',
-      currency: 'UAH',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-    }).format(price);
-  };
-
-  // Показуємо максимум 4 товари
   const displayProducts = products.slice(0, 4);
 
   if (displayProducts.length === 0) {
@@ -50,80 +42,15 @@ export const CategorySection: React.FC<CategorySectionProps> = ({
           {t('bestOffers.viewAll').replace(' →', '')}
         </button>
       </div>
-
       <div className="category-products-grid">
-        {displayProducts.map((product) => {
-          const oldPrice = Math.round(product.price * 1.15);
-          const discount = oldPrice - product.price;
-          const discountAmount = formatPrice(discount);
-          const rating = (4.4 + Math.random() * 0.5).toFixed(1);
-          const reviews = Math.floor(Math.random() * 200) + 10;
-
-          return (
-            <div
-              key={product.id}
-              className="category-product-card"
-              onClick={() => navigate(`/product/${product.id}`)}
-            >
-              <div className="category-product-image-wrapper">
-                <img
-                  src={product.image}
-                  alt={pickText(product.name, lang)}
-                  className="category-product-image"
-                />
-                {discount > 0 && (
-                  <div className="category-discount-badge">
-                    {t('bestOffers.discount')} {discountAmount}
-                  </div>
-                )}
-                <button
-                  className="category-favorite-btn"
-                  title={t('bestOffers.favorite')}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                >
-                  ❤️
-                </button>
-              </div>
-
-              <div className="category-product-info">
-                <h3 className="category-product-name">{pickText(product.name, lang)}</h3>
-
-                <div className="category-product-rating">
-                  <span className="rating-stars">{'★'.repeat(Math.floor(parseFloat(rating)))}</span>
-                  <span className="rating-value">{rating}</span>
-                  <span className="rating-reviews">({reviews})</span>
-                </div>
-
-                <div className="category-product-delivery">
-                  {t('category.delivery')} {t('category.deliveryPrice')}
-                </div>
-
-                <div className="category-product-price">
-                  {discount > 0 && (
-                    <span className="category-old-price">{formatPrice(oldPrice)}</span>
-                  )}
-                  <span className="category-current-price">{formatPrice(product.price)}</span>
-                </div>
-
-                <div className="category-product-bonus">
-                  +{Math.round(product.price * 0.01)}₴ {t('category.bonus')}
-                </div>
-
-                <button
-                  className="category-add-to-cart-btn btn-primary"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onAddToCart(product);
-                  }}
-                >
-                  🛒 {t('bestOffers.addToCart')}
-                </button>
-              </div>
-            </div>
-          );
-        })}
+        {displayProducts.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            onAddToCart={onAddToCart}
+            onQuickView={onQuickView}
+          />
+        ))}
       </div>
     </div>
   );

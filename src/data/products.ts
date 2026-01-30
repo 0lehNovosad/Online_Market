@@ -450,5 +450,406 @@ export const products: Product[] = [
     categoryKey: 'watches',
     subcategoryKey: 'classic',
     brand: 'Orient'
+  },
+  // --- More products (expanded catalog) ---
+  {
+    id: 33,
+    name: { uk: 'Ноутбук HP Spectre x360 14', en: 'HP Spectre x360 14 Laptop' },
+    price: 57999,
+    description: { uk: '14", OLED, Intel Core i7, 16GB RAM, 1TB SSD — преміум 2-в-1', en: '14\" OLED, Intel Core i7, 16GB RAM, 1TB SSD — premium 2-in-1' },
+    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&h=800&fit=crop',
+    categoryKey: 'laptops',
+    subcategoryKey: 'laptops-all',
+    brand: 'HP'
+  },
+  {
+    id: 34,
+    name: { uk: 'Ноутбук Acer Swift 3', en: 'Acer Swift 3 Laptop' },
+    price: 32999,
+    description: { uk: '14", Ryzen 7, 16GB RAM, 512GB SSD — легкий для роботи та навчання', en: '14\", Ryzen 7, 16GB RAM, 512GB SSD — lightweight for work and study' },
+    image: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&h=800&fit=crop',
+    categoryKey: 'laptops',
+    subcategoryKey: 'laptops-all',
+    brand: 'Acer'
+  },
+  {
+    id: 35,
+    name: { uk: 'Ноутбук MSI Katana 15', en: 'MSI Katana 15 Gaming Laptop' },
+    price: 59999,
+    description: { uk: '15.6", RTX графіка, 16GB RAM, 1TB SSD — для ігор та контенту', en: '15.6\", RTX graphics, 16GB RAM, 1TB SSD — gaming & content creation' },
+    image: 'https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=800&h=800&fit=crop',
+    categoryKey: 'laptops',
+    subcategoryKey: 'laptops-all',
+    brand: 'MSI'
+  },
+  {
+    id: 36,
+    name: { uk: 'Системний блок Lenovo Legion Tower', en: 'Lenovo Legion Tower Desktop PC' },
+    price: 68999,
+    description: { uk: 'Ігровий ПК: Ryzen 7, 32GB RAM, 1TB SSD, RTX 4070', en: 'Gaming PC: Ryzen 7, 32GB RAM, 1TB SSD, RTX 4070' },
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&h=800&fit=crop',
+    categoryKey: 'laptops',
+    subcategoryKey: 'desktops',
+    brand: 'Lenovo'
+  },
+  {
+    id: 37,
+    name: { uk: 'Системний блок HP ProDesk SFF', en: 'HP ProDesk SFF Desktop PC' },
+    price: 29999,
+    description: { uk: 'Компактний офісний ПК: Intel Core i5, 16GB RAM, 512GB SSD', en: 'Compact office PC: Intel Core i5, 16GB RAM, 512GB SSD' },
+    image: 'https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800&h=800&fit=crop',
+    categoryKey: 'laptops',
+    subcategoryKey: 'desktops',
+    brand: 'HP'
+  },
+  {
+    id: 38,
+    name: { uk: 'Монітор LG UltraGear 27\"', en: 'LG UltraGear 27\" Monitor' },
+    price: 13999,
+    description: { uk: '27\" IPS, 144Hz, 1ms — ідеально для ігор', en: '27\" IPS, 144Hz, 1ms — perfect for gaming' },
+    image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&h=800&fit=crop',
+    categoryKey: 'laptops',
+    subcategoryKey: 'monitors',
+    brand: 'LG'
+  },
+  {
+    id: 39,
+    name: { uk: 'Монітор Samsung Smart Monitor M8', en: 'Samsung Smart Monitor M8' },
+    price: 19999,
+    description: { uk: '32\" 4K, Smart TV функції, USB‑C', en: '32\" 4K, Smart TV features, USB‑C' },
+    image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=800&h=800&fit=crop',
+    categoryKey: 'laptops',
+    subcategoryKey: 'monitors',
+    brand: 'Samsung'
+  },
+  {
+    id: 40,
+    name: { uk: 'iPhone 14', en: 'iPhone 14' },
+    price: 36999,
+    description: { uk: 'Apple смартфон: 128GB, подвійна камера, Face ID', en: 'Apple smartphone: 128GB, dual camera, Face ID' },
+    image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800&h=800&fit=crop',
+    categoryKey: 'phones',
+    subcategoryKey: 'phones-all',
+    brand: 'Apple'
+  },
+  {
+    id: 41,
+    name: { uk: 'Samsung Galaxy A55', en: 'Samsung Galaxy A55' },
+    price: 19999,
+    description: { uk: 'AMOLED, 256GB, швидка зарядка — вигідний середній клас', en: 'AMOLED, 256GB, fast charging — great mid-range' },
+    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&h=800&fit=crop',
+    categoryKey: 'phones',
+    subcategoryKey: 'phones-all',
+    brand: 'Samsung'
+  },
+  {
+    id: 42,
+    name: { uk: 'Xiaomi Redmi Note 13 Pro', en: 'Xiaomi Redmi Note 13 Pro' },
+    price: 15999,
+    description: { uk: '120Hz AMOLED, 256GB, 200MP камера', en: '120Hz AMOLED, 256GB, 200MP camera' },
+    image: 'https://images.unsplash.com/photo-1580915411954-282cb1b0d780?w=800&h=800&fit=crop',
+    categoryKey: 'phones',
+    subcategoryKey: 'phones-all',
+    brand: 'Xiaomi'
+  },
+  {
+    id: 43,
+    name: { uk: 'Чохол силіконовий для iPhone', en: 'Silicone Case for iPhone' },
+    price: 699,
+    description: { uk: 'М’який силікон, захист камери, сумісний з MagSafe', en: 'Soft silicone, camera protection, MagSafe compatible' },
+    image: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=800&h=800&fit=crop',
+    categoryKey: 'phones',
+    subcategoryKey: 'phone-accessories',
+    brand: 'Apple'
+  },
+  {
+    id: 44,
+    name: { uk: 'Повербанк 20 000 mAh USB‑C', en: '20,000mAh USB‑C Power Bank' },
+    price: 1599,
+    description: { uk: 'Швидка зарядка 22.5W, 2×USB + USB‑C', en: 'Fast charge 22.5W, 2×USB + USB‑C' },
+    image: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=800&h=800&fit=crop',
+    categoryKey: 'phones',
+    subcategoryKey: 'phone-accessories',
+    brand: 'Baseus'
+  },
+  {
+    id: 45,
+    name: { uk: 'Apple Watch SE', en: 'Apple Watch SE' },
+    price: 12999,
+    description: { uk: 'Розумний годинник з GPS, трекінг активності та здоров’я', en: 'Smartwatch with GPS, activity and health tracking' },
+    image: 'https://images.unsplash.com/photo-1544117519-31a4b719223d?w=800&h=800&fit=crop',
+    categoryKey: 'watches',
+    subcategoryKey: 'smartwatches',
+    brand: 'Apple'
+  },
+  {
+    id: 46,
+    name: { uk: 'Garmin Venu 3', en: 'Garmin Venu 3' },
+    price: 18999,
+    description: { uk: 'GPS, спорт-режими, автономність до 14 днів', en: 'GPS, sports modes, up to 14 days battery' },
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&h=800&fit=crop',
+    categoryKey: 'watches',
+    subcategoryKey: 'smartwatches',
+    brand: 'Garmin'
+  },
+  {
+    id: 47,
+    name: { uk: 'Класичний годинник Seiko 5', en: 'Seiko 5 Classic Watch' },
+    price: 8999,
+    description: { uk: 'Механіка, автопідзавод, нержавіюча сталь', en: 'Automatic mechanical, stainless steel' },
+    image: 'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=800&h=800&fit=crop',
+    categoryKey: 'watches',
+    subcategoryKey: 'classic',
+    brand: 'Seiko'
+  },
+  {
+    id: 48,
+    name: { uk: 'Навушники Bose QuietComfort Ultra', en: 'Bose QuietComfort Ultra Headphones' },
+    price: 17999,
+    description: { uk: 'ANC шумозаглушення, Bluetooth, до 24 годин', en: 'ANC noise cancelling, Bluetooth, up to 24 hours' },
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=800&fit=crop',
+    categoryKey: 'audio',
+    subcategoryKey: 'headphones',
+    brand: 'Bose'
+  },
+  {
+    id: 49,
+    name: { uk: 'Навушники Sennheiser Momentum 4', en: 'Sennheiser Momentum 4 Headphones' },
+    price: 16999,
+    description: { uk: 'Преміум звук, ANC, до 60 годин автономності', en: 'Premium sound, ANC, up to 60 hours battery' },
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=800&fit=crop',
+    categoryKey: 'audio',
+    subcategoryKey: 'headphones',
+    brand: 'Sennheiser'
+  },
+  {
+    id: 50,
+    name: { uk: 'Колонка JBL Charge 5', en: 'JBL Charge 5 Speaker' },
+    price: 6999,
+    description: { uk: 'Потужний бас, IP67, до 20 годин', en: 'Big bass, IP67, up to 20 hours' },
+    image: 'https://images.unsplash.com/photo-1589003077984-894e133dabab?w=800&h=800&fit=crop',
+    categoryKey: 'audio',
+    subcategoryKey: 'speakers',
+    brand: 'JBL'
+  },
+  {
+    id: 51,
+    name: { uk: 'Колонка Marshall Emberton II', en: 'Marshall Emberton II Speaker' },
+    price: 8999,
+    description: { uk: 'Фірмовий дизайн, 360° звук, IP67', en: 'Iconic design, 360° sound, IP67' },
+    image: 'https://images.unsplash.com/photo-1589003077984-894e133dabab?w=800&h=800&fit=crop',
+    categoryKey: 'audio',
+    subcategoryKey: 'speakers',
+    brand: 'Marshall'
+  },
+  {
+    id: 52,
+    name: { uk: 'iPad (10th Gen)', en: 'iPad (10th Gen)' },
+    price: 21999,
+    description: { uk: '10.9\", 64GB, Wi‑Fi — універсальний планшет', en: '10.9\", 64GB, Wi‑Fi — all‑around tablet' },
+    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=800&fit=crop',
+    categoryKey: 'tablets',
+    subcategoryKey: 'tablets-all',
+    brand: 'Apple'
+  },
+  {
+    id: 53,
+    name: { uk: 'Samsung Galaxy Tab A9+', en: 'Samsung Galaxy Tab A9+' },
+    price: 11999,
+    description: { uk: '11\", 128GB, Dolby Atmos — для навчання та відео', en: '11\", 128GB, Dolby Atmos — study & video' },
+    image: 'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800&h=800&fit=crop',
+    categoryKey: 'tablets',
+    subcategoryKey: 'tablets-all',
+    brand: 'Samsung'
+  },
+  {
+    id: 54,
+    name: { uk: 'Фотоапарат Fujifilm X-T5', en: 'Fujifilm X-T5 Camera' },
+    price: 74999,
+    description: { uk: '40MP, 4K, стабілізація — для фото та відео', en: '40MP, 4K, stabilization — photo & video' },
+    image: 'https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=800&h=800&fit=crop',
+    categoryKey: 'photo',
+    subcategoryKey: 'cameras',
+    brand: 'Fujifilm'
+  },
+  {
+    id: 55,
+    name: { uk: 'Фотоапарат Nikon Z6 II', en: 'Nikon Z6 II Camera' },
+    price: 79999,
+    description: { uk: 'Full-frame, 4K, швидкий автофокус', en: 'Full-frame, 4K, fast autofocus' },
+    image: 'https://images.unsplash.com/photo-1519183071298-a2962be96c09?w=800&h=800&fit=crop',
+    categoryKey: 'photo',
+    subcategoryKey: 'cameras',
+    brand: 'Nikon'
+  },
+  {
+    id: 56,
+    name: { uk: "Об'єктив Sigma 35mm f/1.4", en: 'Sigma 35mm f/1.4 Lens' },
+    price: 25999,
+    description: { uk: 'Світлосильний фікс для портретів та репортажу', en: 'Fast prime for portraits and street photography' },
+    image: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&h=800&fit=crop',
+    categoryKey: 'photo',
+    subcategoryKey: 'lenses',
+    brand: 'Sigma'
+  },
+  {
+    id: 57,
+    name: { uk: "Об'єктив Tamron 28-75mm f/2.8", en: 'Tamron 28-75mm f/2.8 Lens' },
+    price: 32999,
+    description: { uk: 'Універсальний зум для подорожей та роботи', en: 'Versatile zoom for travel and work' },
+    image: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&h=800&fit=crop',
+    categoryKey: 'photo',
+    subcategoryKey: 'lenses',
+    brand: 'Tamron'
+  },
+  {
+    id: 58,
+    name: { uk: 'Ноутбук ASUS Zenbook 14', en: 'ASUS Zenbook 14 Laptop' },
+    price: 41999,
+    description: { uk: '14\", OLED, 16GB RAM, 512GB SSD — стильний ультрабук', en: '14\" OLED, 16GB RAM, 512GB SSD — stylish ultrabook' },
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&fit=crop',
+    categoryKey: 'laptops',
+    subcategoryKey: 'laptops-all',
+    brand: 'ASUS'
+  },
+  {
+    id: 59,
+    name: { uk: 'Монітор ASUS ProArt 27\"', en: 'ASUS ProArt 27\" Monitor' },
+    price: 21999,
+    description: { uk: '27\" 4K IPS, 100% sRGB — для дизайну', en: '27\" 4K IPS, 100% sRGB — for creators' },
+    image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&h=800&fit=crop',
+    categoryKey: 'laptops',
+    subcategoryKey: 'monitors',
+    brand: 'ASUS'
+  },
+  {
+    id: 60,
+    name: { uk: 'Навушники Beats Studio Pro', en: 'Beats Studio Pro Headphones' },
+    price: 14999,
+    description: { uk: 'Bluetooth, ANC, просторовий звук', en: 'Bluetooth, ANC, spatial audio' },
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=800&fit=crop',
+    categoryKey: 'audio',
+    subcategoryKey: 'headphones',
+    brand: 'Beats'
+  },
+  {
+    id: 61,
+    name: { uk: 'Смартфон Google Pixel 8', en: 'Google Pixel 8 Smartphone' },
+    price: 32999,
+    description: { uk: 'Камера з AI, 128GB, чистий Android', en: 'AI camera, 128GB, clean Android' },
+    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&h=800&fit=crop',
+    categoryKey: 'phones',
+    subcategoryKey: 'phones-all',
+    brand: 'Google'
+  },
+  {
+    id: 62,
+    name: { uk: 'Зарядний пристрій USB‑C 45W', en: 'USB‑C 45W Charger' },
+    price: 999,
+    description: { uk: 'Швидка зарядка PD, компактний адаптер', en: 'Fast PD charging, compact adapter' },
+    image: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=800&h=800&fit=crop',
+    categoryKey: 'phones',
+    subcategoryKey: 'phone-accessories',
+    brand: 'Anker'
+  },
+  {
+    id: 63,
+    name: { uk: 'Apple iPad mini', en: 'Apple iPad mini' },
+    price: 23999,
+    description: { uk: '8.3\", 64GB, Wi‑Fi — компактний і швидкий', en: '8.3\", 64GB, Wi‑Fi — compact and fast' },
+    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=800&fit=crop',
+    categoryKey: 'tablets',
+    subcategoryKey: 'tablets-all',
+    brand: 'Apple'
+  },
+  {
+    id: 64,
+    name: { uk: 'Камера GoPro HERO12', en: 'GoPro HERO12 Action Camera' },
+    price: 17999,
+    description: { uk: '5.3K відео, стабілізація, водозахист', en: '5.3K video, stabilization, waterproof' },
+    image: 'https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=800&h=800&fit=crop',
+    categoryKey: 'photo',
+    subcategoryKey: 'cameras',
+    brand: 'GoPro'
+  },
+  {
+    id: 65,
+    name: { uk: 'Годинник Casio G‑Shock', en: 'Casio G‑Shock Watch' },
+    price: 6999,
+    description: { uk: 'Ударостійкий, водозахист, підсвітка', en: 'Shock resistant, water resistant, backlight' },
+    image: 'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=800&h=800&fit=crop',
+    categoryKey: 'watches',
+    subcategoryKey: 'classic',
+    brand: 'Casio'
+  },
+  {
+    id: 66,
+    name: { uk: 'Колонка Sony SRS-XG300', en: 'Sony SRS-XG300 Speaker' },
+    price: 9999,
+    description: { uk: 'Потужний звук, підсвітка, до 25 годин', en: 'Powerful sound, lighting, up to 25 hours' },
+    image: 'https://images.unsplash.com/photo-1589003077984-894e133dabab?w=800&h=800&fit=crop',
+    categoryKey: 'audio',
+    subcategoryKey: 'speakers',
+    brand: 'Sony'
+  },
+  {
+    id: 67,
+    name: { uk: 'Навушники Apple AirPods (3 gen)', en: 'Apple AirPods (3rd gen)' },
+    price: 6999,
+    description: { uk: 'Просторовий звук, зарядка MagSafe, комфортна посадка', en: 'Spatial audio, MagSafe charging, comfortable fit' },
+    image: 'https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=800&h=800&fit=crop',
+    categoryKey: 'audio',
+    subcategoryKey: 'headphones',
+    brand: 'Apple'
+  },
+  {
+    id: 68,
+    name: { uk: 'Ноутбук Lenovo ThinkPad X1 Carbon', en: 'Lenovo ThinkPad X1 Carbon Laptop' },
+    price: 71999,
+    description: { uk: '14\", бізнес‑клас, Intel Core i7, 16GB RAM, 1TB SSD', en: '14\" business class, Intel Core i7, 16GB RAM, 1TB SSD' },
+    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&h=800&fit=crop',
+    categoryKey: 'laptops',
+    subcategoryKey: 'laptops-all',
+    brand: 'Lenovo'
+  },
+  {
+    id: 69,
+    name: { uk: 'Монітор Dell 24\" IPS', en: 'Dell 24\" IPS Monitor' },
+    price: 8999,
+    description: { uk: '24\" Full HD, IPS, тонкі рамки', en: '24\" Full HD, IPS, slim bezels' },
+    image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&h=800&fit=crop',
+    categoryKey: 'laptops',
+    subcategoryKey: 'monitors',
+    brand: 'Dell'
+  },
+  {
+    id: 70,
+    name: { uk: 'Системний блок MSI Creator P100', en: 'MSI Creator P100 Desktop PC' },
+    price: 89999,
+    description: { uk: 'Для роботи з графікою: Intel Core i9, 32GB RAM, 2TB SSD', en: 'For creators: Intel Core i9, 32GB RAM, 2TB SSD' },
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&h=800&fit=crop',
+    categoryKey: 'laptops',
+    subcategoryKey: 'desktops',
+    brand: 'MSI'
+  },
+  {
+    id: 71,
+    name: { uk: 'Смартфон OnePlus 12', en: 'OnePlus 12 Smartphone' },
+    price: 33999,
+    description: { uk: '120Hz AMOLED, 256GB, швидка зарядка 100W', en: '120Hz AMOLED, 256GB, 100W fast charging' },
+    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&h=800&fit=crop',
+    categoryKey: 'phones',
+    subcategoryKey: 'phones-all',
+    brand: 'OnePlus'
+  },
+  {
+    id: 72,
+    name: { uk: 'Скло захисне 9H для смартфона', en: '9H Tempered Glass Screen Protector' },
+    price: 399,
+    description: { uk: 'Повне покриття, олеофобне покриття, легке встановлення', en: 'Full coverage, oleophobic coating, easy install' },
+    image: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=800&h=800&fit=crop',
+    categoryKey: 'phones',
+    subcategoryKey: 'phone-accessories',
+    brand: 'Generic'
   }
 ];
